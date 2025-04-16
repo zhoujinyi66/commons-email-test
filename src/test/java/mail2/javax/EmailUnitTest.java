@@ -21,7 +21,7 @@ class EmailUnitTest {
 
     @Test
     void testInvalidPort() {
-        assertThrows(EmailException.class, () -> email.setSmtpPort(-1));
+        assertThrows(IllegalArgumentException.class, () -> email.setSmtpPort(-1));
     }
 
     @Test
