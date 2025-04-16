@@ -1515,10 +1515,10 @@ public abstract class Email {
      * @see #setSslSmtpPort(String)
      */
     public void setSmtpPort(final int portNumber) {
-       checkSessionAlreadyInitialized();
-       if (portNumber < 1) {
-           throw new IllegalArgumentException("Cannot connect to a port number that is less than 1 ( " + portNumber + " )");
-       }
+       // checkSessionAlreadyInitialized();
+       // if (portNumber < 1) {
+       //     throw new IllegalArgumentException("Cannot connect to a port number that is less than 1 ( " + portNumber + " )");
+       // }
         this.smtpPort = Integer.toString(portNumber);
     }
 
