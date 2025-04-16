@@ -46,4 +46,41 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-</project>
+
+    <build>
+        <plugins>
+            <!-- 配置 Maven JAR 插件以导出完整的 JAR 包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- 请将这里替换为你的主类全限定名 -->
+                            <mainClass>com.ginnne.MainClass</mainClass> 
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- 配置 Maven Surefire 插件以运行测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <properties>
+                        <configurationParameters>
+                            junit.jupiter.extensions.autodetection.enabled = true
+                        </configurationParameters>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>    
