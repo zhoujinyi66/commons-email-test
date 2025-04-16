@@ -1,16 +1,24 @@
 package mail2.javax;
 
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import mail2.core.EmailException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EmailUnitTest {
-    private SimpleEmail email;
+    private Email email;
 
     @BeforeEach
     void setUp() {
-        email = new SimpleEmail();
+        email = new Email() {
+            @Override
+            public Email setMsg(String msg) throws EmailException {
+                return null;
+            }
+        };
         email.setHostName("smtp.example.com");
     }
 
